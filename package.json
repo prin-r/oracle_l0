@@ -1,0 +1,14 @@
+{
+  "name": "oracle_l0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "mumu",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@bandprotocol/bandchain.js": "1.3.0-alpha.0",
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "web3": "^1.5.2"
+  }
+}

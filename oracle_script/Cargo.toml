@@ -1,0 +1,16 @@
+[package]
+name = "get-block"
+version = "0.1.0"
+authors = ["Band Protocol <dev@bandprotocol.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+owasm = { version = "0.1.10" }
+obi = { version = "0.0.2" }
+lazy_static = "1.4.0"
+hex = "0.4.3"
