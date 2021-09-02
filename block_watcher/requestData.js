@@ -113,7 +113,7 @@ const sendRequest = async (chainName, tx, callback) => {
         break;
       }
     } catch (e) {
-      // console.log(e);
+      // pass
     }
     await sleep(1000);
   }

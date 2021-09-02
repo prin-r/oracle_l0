@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import requests
 
 HEADERS = {"Content-Type": "application/json"}
-infura_url = "https://kovan.infura.io/v3/8a0f2143b6444ee0a8d0f0414fd533d2"
+infura_url = "https://kovan.infura.io/v3/" + os.getenv("API_KEY")
 
 
 def main(block_number):
