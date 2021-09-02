@@ -48,13 +48,13 @@ BSC Testnet
 ## Datasource
 
 [See deployed datasource on Bandchain testnet3](https://laozi-testnet3.cosmoscan.io/data-source/95)
-[Datasource foler](./datasource)
+[Datasource folder](./datasource)
 
 ## Oraclescript
 
 [See deployed oracle script on Bandchain testnet3](https://laozi-testnet3.cosmoscan.io/oracle-script/58)
-[Oracle script foler](./oracle_script)
+[Oracle script folder](./oracle_script)
 
 ## Block Watcher
 
-[Block Watcher foler](./block_watcher)
+[Block Watcher folder](./block_watcher)
