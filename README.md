@@ -41,8 +41,8 @@ BSC Testnet
 
 | Name      | Address                                                                                                                           |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| ContractB | [0xdcfa1244c37262441aa7caf9893fdd99db101e2a](https://testnet.bscscan.com/address/0xdcfa1244c37262441aa7caf9893fdd99db101e2a#code) |
-| OracleB   | [0x16665448a08f68d82215ccfdcef88a9ba1589ae7](https://testnet.bscscan.com/address/0x16665448a08f68d82215ccfdcef88a9ba1589ae7#code) |
+| ContractB | [0xCB1144534876A10CF3556b28E9E9101e44cbf215](https://testnet.bscscan.com/address/0xCB1144534876A10CF3556b28E9E9101e44cbf215#code) |
+| OracleB   | [0x6A610498dAd9D0F5076F2eBD08F2Fd26642E81ac](https://testnet.bscscan.com/address/0x6A610498dAd9D0F5076F2eBD08F2Fd26642E81ac#code) |
 | Bridge    | [0xfdBBAD9D6A4e85a38c12ca387014bd5F697f0661](https://testnet.bscscan.com/address/0xfdBBAD9D6A4e85a38c12ca387014bd5F697f0661#code) |
 
 ## Datasource

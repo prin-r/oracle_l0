@@ -76,7 +76,7 @@ contract OracleB is Ownable {
         );
 
         /// Result checking
-        require(params.chainId == thisChainId, "FAIL_INCORRECT_CHAIN_ID");
+        require(params.remoteChainId == thisChainId, "FAIL_INCORRECT_REMOTE_CHAIN_ID");
         require(result.confirmations >= minimumConfirmations, "FAIL_TOO_SMALL_CONFIRMATIONS");
 
         /// Call updateBlockHeader

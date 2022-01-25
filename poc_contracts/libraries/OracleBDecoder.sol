@@ -8,8 +8,10 @@ library OracleBDecoder {
 
     struct Params {
         uint16 chainId;
+        uint16 remoteChainId;
         address contractAddress;
         uint256 blockConfirmations;
+        uint256 blockNumber;
     }
 
     struct Result {
@@ -28,8 +30,10 @@ library OracleBDecoder {
     {
         Obi.Data memory decoder = Obi.from(encodedParams);
         params.chainId = decoder.decodeU16();
+        params.remoteChainId = decoder.decodeU16();
         params.contractAddress = decoder.decodeAddress();
         params.blockConfirmations = uint256(decoder.decodeU64());
+        params.blockNumber = uint256(decoder.decodeU64());
         require(decoder.finished(), "DATA_DECODE_NOT_FINISHED");
     }
 
