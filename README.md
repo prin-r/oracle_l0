@@ -34,8 +34,8 @@ Kovan Testnet
 
 | Name      | Address                                                                                                                          |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| ContractA | [0x3d1dcaf6706f169d8c5aae59871d05c0433886f3](https://kovan.etherscan.io/address/0x3d1dcaf6706f169d8c5aae59871d05c0433886f3#code) |
-| OracleA   | [0xfaeafd3b76eecaec1b572f3a59ec1c030f2e683f](https://kovan.etherscan.io/address/0xfaeafd3b76eecaec1b572f3a59ec1c030f2e683f#code) |
+| ContractA | [0xd3f0e87Cb1c83E3a857f9523e780DF6032d45bb9](https://kovan.etherscan.io/address/0xd3f0e87Cb1c83E3a857f9523e780DF6032d45bb9#code) |
+| OracleA   | [0x91eda54DC669c621bEc41E41f18C4cf8BC6Bf922](https://kovan.etherscan.io/address/0x91eda54DC669c621bEc41E41f18C4cf8BC6Bf922#code) |
 
 BSC Testnet
 
