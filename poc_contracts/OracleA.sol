@@ -3,16 +3,16 @@ pragma experimental ABIEncoderV2;
 
 contract OracleA {
     event NotifyContractOfBlock(
-        uint16 chain,
+        uint16 chainId,
         address contractAddress,
         uint256 blockConfirmations
     );
 
     function notifyContractOfBlock(
-        uint16 chain,
+        uint16 chainId,
         address contractAddress,
         uint256 blockConfirmations
     ) external {
-        emit NotifyContractOfBlock(chain, contractAddress, blockConfirmations);
+        emit NotifyContractOfBlock(chainId, contractAddress, blockConfirmations);
     }
 }

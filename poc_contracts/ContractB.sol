@@ -1,27 +1,33 @@
+// SPDX-License-Identifier: Apache-2.0
+
 pragma solidity 0.8.4;
-pragma experimental ABIEncoderV2;
+pragma abicoder v2;
 
 contract ContractB {
-    address public oracle;
+    address public trustedOracle;
     uint256 public nonce;
     uint16 public latestChain;
-    bytes32 public latestBlockHashlockHash;
-    bytes32 public latestReceiptsRoot;
+    bytes public latestBlockHashlockHash;
+    uint256 public latestConfirmation;
+    bytes public latestReceiptsRoot;
 
     constructor(address _oracle) {
-        oracle = _oracle;
+        trustedOracle = _oracle;
     }
 
-    function updateBlock(
-        uint16 _chain,
-        bytes32 _blockHash,
-        bytes32 _receiptsRoot
-    ) public {
-        require(msg.sender == oracle, "only oracle");
+    function updateBlockHeader(
+        uint16 remoteChainId,
+        address oracle,
+        bytes calldata blockHash,
+        uint256 confirmations,
+        bytes calldata receiptsRoot
+    ) external {
+        require(msg.sender == trustedOracle && oracle == trustedOracle, "FAIL_UNKNOWN_ORACLE");
 
-        latestChain = _chain;
-        latestBlockHashlockHash = _blockHash;
-        latestReceiptsRoot = _receiptsRoot;
+        latestChain = remoteChainId;
+        latestBlockHashlockHash = blockHash;
+        latestConfirmation = confirmations;
+        latestReceiptsRoot = receiptsRoot;
         nonce = nonce + 1;
     }
 }

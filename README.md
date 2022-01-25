@@ -1,4 +1,4 @@
-# L0 Oracle POC
+# L0 Preparation
 
 This POC project consists of several parts wherein the end it is possible to securely transmit `blockHash, receiptsRoot` of Kovan testnet to BSC testnet using the services of Band oracle.
 
@@ -43,17 +43,17 @@ BSC Testnet
 | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | ContractB | [0xdcfa1244c37262441aa7caf9893fdd99db101e2a](https://testnet.bscscan.com/address/0xdcfa1244c37262441aa7caf9893fdd99db101e2a#code) |
 | OracleB   | [0x16665448a08f68d82215ccfdcef88a9ba1589ae7](https://testnet.bscscan.com/address/0x16665448a08f68d82215ccfdcef88a9ba1589ae7#code) |
-| Bridge    | [0xf694a2a7421efdb441bf63b2ef3864e4eddfb42e](https://testnet.bscscan.com/address/0xf694a2a7421efdb441bf63b2ef3864e4eddfb42e#code) |
+| Bridge    | [0xfdBBAD9D6A4e85a38c12ca387014bd5F697f0661](https://testnet.bscscan.com/address/0xfdBBAD9D6A4e85a38c12ca387014bd5F697f0661#code) |
 
 ## Datasource
 
-[⛓️ See deployed datasource on Bandchain testnet3](https://laozi-testnet3.cosmoscan.io/data-source/95)
+[⛓️ See deployed datasource on Bandchain testnet4](https://laozi-testnet4.cosmoscan.io/data-source/238#code)
 
 [📁 See datasource folder](./datasource)
 
 ## Oraclescript
 
-[⛓️ See deployed oracle script on Bandchain testnet3](https://laozi-testnet3.cosmoscan.io/oracle-script/58)
+[⛓️ See deployed oracle script on Bandchain testnet4](https://laozi-testnet4.cosmoscan.io/oracle-script/113)
 
 [📁 See oracle script folder](./oracle_script)
 

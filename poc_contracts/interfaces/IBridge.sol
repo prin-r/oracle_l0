@@ -29,18 +29,4 @@ interface IBridge {
     function relayAndVerify(bytes calldata data)
         external
         returns (Result memory);
-
-    /// Performs oracle state relay and many times of oracle data verification in one go. The caller submits
-    /// the encoded proof and receives back the decoded data, ready to be validated and used.
-    /// @param data The encoded data for oracle state relay and an array of data verification.
-    function relayAndMultiVerify(bytes calldata data)
-        external
-        returns (Result[] memory);
-
-    // Performs oracle state relay and requests count verification in one go. The caller submits
-    /// the encoded proof and receives back the decoded data, ready tobe validated and used.
-    /// @param data The encoded data for oracle state relay and requests count verification.
-    function relayAndVerifyCount(bytes calldata data)
-        external
-        returns (uint64, uint64); // block time, requests count
 }
