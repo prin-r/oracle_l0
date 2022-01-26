@@ -9,6 +9,7 @@
 7. Remove block_watcher from this repo (after moving to Band)
 8. Refactor the solidity code
 9. Add tests for solidity and os, ds
-10. Let our team and partner review the code
-11. Fix the implementation according to the suggestions from our team and partner
-12. Let's see if the entire system can work well on the testnet. If there are no problems, then let's talk about the next step.
+10. Create caching layer for the ds
+11. Let our team and partner review the code
+12. Fix the implementation according to the suggestions from our team and partner
+13. Let's see if the entire system can work well on the testnet. If there are no problems, then let's talk about the next step.
