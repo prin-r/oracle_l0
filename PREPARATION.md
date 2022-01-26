@@ -5,6 +5,7 @@
 3. Internal meeting
 4. Construct a meeting with our partner
     - Create meeting outline
+    - List questions
 5. Deploy these first working version of contracts and os, ds to the testnet
 6. Let our partner work with the poc contracts and os, ds to create the more robust version of `Block_Watcher`
 7. Move this repo in to Band Protocol org.
