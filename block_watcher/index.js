@@ -1,15 +1,12 @@
 const Web3 = require("web3");
 require("dotenv").config();
-const { sendRequest, relayToTargetChain } = require("./requestData.js");
+const { sendRequest, relayToTargetChain, sleep } = require("./utils.js");
 
 // variables
 const kovanWeb3 = new Web3(process.env.ETH_RPC);
 const startBlock = Number(process.env.START_ETH_BLOCK);
 let currentBlock = startBlock;
 let pendingTxs = []; // [{targetBlock, remoteChainID, minimumConfirmations, contractAddress, txHash}]
-
-// a utility function for pausing the main loop
-const sleep = async (ms) => new Promise((r) => setTimeout(r, ms));
 
 // subscribe new events
 kovanWeb3.eth.subscribe("logs", {

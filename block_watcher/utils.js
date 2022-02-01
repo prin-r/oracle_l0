@@ -19,6 +19,7 @@ const privateKey = PrivateKey.fromMnemonic(mnemonic);
 const pubkey = privateKey.toPubkey();
 const sender = pubkey.toAddress().toAccBech32();
 
+// a utility function for pausing the main loop
 const sleep = async (ms) => new Promise((r) => setTimeout(r, ms));
 
 const relayToTargetChain = async (proof) => {
@@ -124,4 +125,4 @@ const sendRequest = async (chain_id, tx) => {
   return proof;
 };
 
-module.exports = { sendRequest, relayToTargetChain };
+module.exports = { sendRequest, relayToTargetChain, sleep };
