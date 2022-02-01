@@ -8,12 +8,13 @@ const {
   Coin,
   Transaction,
   Fee,
+  Obi,
 } = require("@bandprotocol/bandchain.js");
 const bscWeb3 = new Web3(process.env.BSC_RPC);
 
 const client = new Client(process.env.BAND_RPC);
 const { PrivateKey } = Wallet;
-const mnemonic = process.env.BAND_REQUEST_PK;
+const mnemonic = process.env.BAND_MNEMONIC;
 const privateKey = PrivateKey.fromMnemonic(mnemonic);
 const pubkey = privateKey.toPubkey();
 const sender = pubkey.toAddress().toAccBech32();
@@ -38,58 +39,59 @@ const relayToTargetChain = async (proof) => {
           },
           ["0x" + proof]
         ),
+        value: 0,
         gas: Number(process.env.GAS_B),
-        gasPrice: await bscWeb3.eth.getGasPrice(),
+        gasPrice: Number(await bscWeb3.eth.getGasPrice()),
       },
       process.env.BSC_RELAYER_PK
     );
+
     const receipt = await bscWeb3.eth.sendSignedTransaction(
       signed.rawTransaction
     );
-    console.log(receipt);
+    console.log("RELAY_TX: ", receipt);
   } catch (e) {
     console.log(e);
   }
 };
 
-const sendRequest = async (chainName, tx, callback) => {
-  const targetContractAddress = tx.contractAddress.slice(2);
-  const blockNumber = tx.targetBlock;
-  const calldata = Buffer.concat([
-    Buffer.from([0, 0, 0, chainName.length]),
-    Buffer.from(chainName, "utf-8"),
-    Buffer.from([0, 0, 0, 20]),
-    Buffer.from(targetContractAddress, "hex"),
-    Buffer.from(blockNumber.toString(16).padStart(16, "0"), "hex"),
-  ]);
+const sendRequest = async (chain_id, tx) => {
+  const obi = new Obi('{chain_id:u16,remote_chain_id:u16,contract_address:[u8],block_confirmations:u64,block_number:u64}/{remote_chain_id:u16,block_hash:[u8],confirmations:u64,receipts_root:[u8]}');
+  const calldata = obi.encodeInput({
+    chain_id,
+    remote_chain_id: tx.remoteChainID,
+    contract_address: [...Buffer.from(tx.contractAddress.slice(2),"hex")],
+    block_confirmations: tx.minimumConfirmations,
+    block_number: Number(tx.targetBlock)
+  });
 
   let coin = new Coin();
   coin.setDenom("uband");
   coin.setAmount("10");
 
   const requestMessage = new Message.MsgRequestData(
-    58,
+    113,
     calldata,
     1,
     1,
     "band",
     sender,
     [coin],
-    50000,
-    200000
+    30000,
+    50000
   );
 
   // Construct a transaction
-  const fee = new Fee();
-  fee.setAmountList([coin]);
-  const chainId = await client.getChainId();
-  const txn = new Transaction();
-  txn.withMessages(requestMessage.toAny());
-  await txn.withSender(client, sender);
-  txn.withChainId(chainId);
-  txn.withGas(2000000);
-  txn.withFee(fee);
-  txn.withMemo("");
+  const fee = new Fee()
+  fee.setAmountList([coin])
+  fee.setGasLimit(400000)
+  const chainId = await client.getChainId()
+  const txn = new Transaction()
+  txn.withMessages(requestMessage)
+  await txn.withSender(client, sender)
+  txn.withChainId(chainId)
+  txn.withFee(fee)
+  txn.withMemo('')
 
   // Sign the transaction using the private key
   const signDoc = await txn.getSignDoc(pubkey);
@@ -119,11 +121,7 @@ const sendRequest = async (chainName, tx, callback) => {
   }
   console.log("proof len", proof.length);
 
-  await relayToTargetChain(proof);
-
-  callback(tx.txHash);
-
-  return sendTx;
+  return proof;
 };
 
-module.exports = { sendRequest };
+module.exports = { sendRequest, relayToTargetChain };
