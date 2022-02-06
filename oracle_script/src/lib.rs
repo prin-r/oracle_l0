@@ -44,7 +44,7 @@ fn execute_impl(input: Input) -> Output {
 
     let result_vec = result.split(" ").collect::<Vec<&str>>();
     Output {
-        remote_chain_id: input.remote_chain_id,
+        remote_chain_id: input.chain_id,
         block_hash: hex::decode(&result_vec[0]).expect("Decoding block_hash failed"),
         confirmations: result_vec[1].parse::<u64>().unwrap(),
         receipts_root: hex::decode(&result_vec[2]).expect("Decoding receipts_root failed"),
